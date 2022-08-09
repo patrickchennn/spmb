@@ -12,7 +12,9 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/biodata",require("./routes/biodataRoutes.js"));
+app.use("/api/biodata",require("./routes/biodataRoutes.js"));
+app.use("/api/user",require("./routes/userRoutes.js"));
+
 app.use(errorHandler);
 
-app.listen(port,console.log(`app running on http://localhost:${port}`));
+app.listen(port,console.log(`\napp running on http://localhost:${port}`));

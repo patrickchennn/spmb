@@ -6,8 +6,10 @@ const {
   updateBiodata,
   deleteBiodata
 } = require("../controllers/biodataController.js");
+const { protect } = require("../middleware/authMiddleware.js");
 
-router.route('/').get(getBiodatas).post(setBiodata);
-router.route("/:id").get(getBiodata).put(updateBiodata).delete(deleteBiodata);
+
+router.route('/').get(protect,getBiodatas).post(protect,setBiodata);
+router.route("/:id").get(protect,getBiodata).put(protect,updateBiodata).delete(protect,deleteBiodata);
 
 module.exports = router;
